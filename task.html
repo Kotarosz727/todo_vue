@@ -1,0 +1,25 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>task vue</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />   
+  </head>
+  <body>
+      <div id="app">
+       <p>{{ message }}</p> 
+       <ul v-if="toggle">
+         <li v-for="language in languages">{{ language }}</li>
+       </ul>
+       <button v-on:click="button">ボタン</button>
+       <p>
+         <input type="text" v-model="message">
+       </p>
+       
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+      <script src="js/task.js"></script>
+  </body>
+  </html>
