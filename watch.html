@@ -9,13 +9,13 @@
   <body>
       <div id="app">
         <p>
-          <input type="text" v-model="km">km
+          first name <input type="text" v-model:value="firstName">
         </p>
         <p>
-          <input type="text" v-model="m">m
+          last name <input type="text" v-model:value="lastName">
         </p>
         <p>
-          <input type="text" v-model="mm">mm
+          full name {{ fullname }}
         </p>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
