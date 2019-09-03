@@ -1,9 +1,11 @@
 var app = new Vue({
   el: "#app",
   data: {
-    styleObject: {
-      color: 'blue',
-      fontSize: '36px'
+    message: ''
+  },
+  methods: {
+    clear:function () {
+      this.message = ''
     }
   }
   
