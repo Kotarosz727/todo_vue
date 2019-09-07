@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>Redirect vue</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  </head>
+  <body>
+    <div id="app">
+      <router-link to="/">Home</router-link>
+      <router-link to="/a">A</router-link>
+      <router-link to="/b">B</router-link>
+      <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.10"></script>
+    <script src="https://unpkg.com/vue-router@3.0.6"></script>
+    <script>
+      const B = {
+        template: '<div><h2>This is B.</h2></div>'
+      }
+      const router = new VueRouter({
+        routes: [
+          {
+            path: '/a',
+            redirect: { name: 'page-b' }
+          },
+          {
+            name: 'page-b',
+            path: '/b',
+            component: B
+          }
+        ]
+      })
+
+      const app = new Vue({
+        // router: router 
+        router
+      }).$mount('#app')
+    </script>
+  </body>
+  </html>
