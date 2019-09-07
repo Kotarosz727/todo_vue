@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>Router vue</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  </head>
+  <body>
+    <div id="app">
+      <router-link to="/">Home</router-link>
+      <router-link to="/users/123">User</router-link> 
+      <router-link to="/users/123/profile">Profile</router-link> 
+      <router-link to="/users/123/post">Posts</router-link>
+      <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.10"></script>
+    <script src="https://unpkg.com/vue-router@3.0.6"></script>
+    <script>
+      const User = {
+        template: `
+          <div class="user">
+            <h2>User {{ $route.params.userId }}</h2>
+            <router-view></router-view>
+          </div>  
+        `
+      }
+
+      const Profile = {
+        template: `
+          <div class="user">
+            <h2>Profile {{ $route.params.userId }}</h2>
+          </div>  
+        `
+      }
+
+      const Post = {
+        template: `
+          <div class="user">
+            <h2>post {{ $route.params.userId }}</h2>
+          </div>  
+        `
+      }
+
+      const router = new VueRouter({
+        routes: [
+          {
+            path: '/users/:userId', component: User,
+            children: [
+              {
+                path: 'profile',
+                component: Profile
+              },
+              {
+                path: 'post',
+                component: Post
+              }
+            ]
+          }
+        ]
+      })
+
+      const app = new Vue({
+        // router: router 
+        router
+      }).$mount('#app')
+    </script>
+  </body>
+  </html>
